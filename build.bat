@@ -7,7 +7,7 @@ SET filename=quickmenu.exe
 FOR /F "usebackq" %%A IN ('%filename%') DO SET /A beforeSize=%%~zA
 
 : Build https://golang.org/cmd/go/
-go build -v -ldflags="-H windowsgui" -o %filename%
+go build -v -ldflags="-w -s -H windowsgui" -o %filename%
 
 FOR /F "usebackq" %%A IN ('%filename%') DO SET /A size=%%~zA
 SET /A diffSize = %size% - %beforeSize%
